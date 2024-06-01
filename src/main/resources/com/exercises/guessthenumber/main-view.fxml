@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.exercises.guessthenumber.MainController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.exercises.guessthenumber.MainController">
+   <children>
+      <Label layoutX="152.0" layoutY="14.0" text="Indovina il numero">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="90.0" text="Numero massimo">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nMax" layoutX="203.0" layoutY="91.0" prefHeight="25.0" prefWidth="75.0" />
+      <Label layoutX="328.0" layoutY="90.0" text="Tentativi massimi">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tMax" layoutX="475.0" layoutY="91.0" prefHeight="25.0" prefWidth="75.0" />
+      <Label fx:id="lblT" layoutX="368.0" layoutY="198.0" text="Tentativi rimanenti: ???">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="50.0" layoutY="236.0" prefHeight="200.0" prefWidth="500.0" />
+      <Button fx:id="btnStartGame" layoutX="51.0" layoutY="136.0" mnemonicParsing="false" onAction="#startGame" prefHeight="39.0" prefWidth="500.0" text="Nuova partita">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCheck" layoutX="135.0" layoutY="199.0" mnemonicParsing="false" onAction="#checkNumber" prefHeight="25.0" prefWidth="85.0" text="Invio" />
+      <TextField fx:id="nTest" layoutX="50.0" layoutY="199.0" prefHeight="25.0" prefWidth="75.0" />
+   </children>
+</AnchorPane>
