@@ -167,11 +167,7 @@ public class MainController {
 
     @FXML
     void toggleAssistMode(ActionEvent event) {
-        if(flagAssistMode.isSelected()){
-            lblAssistMode.setVisible(true);
-        }else {
-            lblAssistMode.setVisible(false);
-        }
+        lblAssistMode.setVisible(flagAssistMode.isSelected());
     }
 
     @FXML
