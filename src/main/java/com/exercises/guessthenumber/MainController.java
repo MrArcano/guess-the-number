@@ -53,10 +53,17 @@ public class MainController {
     @FXML // fx:id="pBarT"
     private ProgressBar pBarT; // Value injected by FXMLLoader
 
+    @FXML // fx:id="flagAssistMode"
+    private CheckBox flagAssistMode; // Value injected by FXMLLoader
+
+    @FXML // fx:id="lblAssistMode"
+    private Label lblAssistMode; // Value injected by FXMLLoader
+
     private int maxAttempts;
     private int remaingAttempts;
     private int usedAttempts;
     private int maxNumber;
+    private int minNumber = 1;
     private int checkNumber;
     private int nRand;
 
@@ -70,6 +77,7 @@ public class MainController {
         errorTMax.setText("");
         errorNTest.setText("");
         pBarT.setProgress(0);
+        lblAssistMode.setText("? < NUMERO < ?");
 
         // Prendo il numero massimo
         try {
@@ -87,6 +95,9 @@ public class MainController {
             errorTMax.setText("Errore inserimento!");
             return;
         }
+
+        // mostro il range possibile
+        lblAssistMode.setText(minNumber + " < NUMERO < " + maxNumber);
 
         // Genero un valore random tra 1 e nMax
         Random random = new Random();
@@ -128,10 +139,15 @@ public class MainController {
         // controllo se maggiore o minore
         if (checkNumber > nRand) {
             messageArea.appendText("T"+ usedAttempts  +": Il numero " + checkNumber + " è troppo ALTO!\n");
+            maxNumber = checkNumber;
         }
         if (checkNumber < nRand) {
             messageArea.appendText("T"+ usedAttempts  +": Il numero " + checkNumber + " è troppo BASSO!\n");
+            minNumber = checkNumber;
         }
+
+        // aggiorno il range possibile
+        lblAssistMode.setText(minNumber + " < NUMERO < " + maxNumber);
 
         // aggiorno i tentativi rimanenti
         remaingAttempts--;
@@ -147,6 +163,15 @@ public class MainController {
             lblT.setText("Tentativi finiti");
         }
 
+    }
+
+    @FXML
+    void toggleAssistMode(ActionEvent event) {
+        if(flagAssistMode.isSelected()){
+            lblAssistMode.setVisible(true);
+        }else {
+            lblAssistMode.setVisible(false);
+        }
     }
 
     @FXML
